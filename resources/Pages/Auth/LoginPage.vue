@@ -92,7 +92,7 @@ const enviando = ref(false);
 const goto = (link) => router.push(link);
 
 const login = async () => {
-    // await base.get("/sanctum/csrf-cookie");
+    await base.get("/sanctum/csrf-cookie");
     api.post("auth/login", {
         email: email.value,
         password: password.value,

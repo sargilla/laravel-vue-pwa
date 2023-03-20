@@ -117,7 +117,10 @@
                             >
                                 <template #loading>
                                     <div class="row">
-                                        <q-spinner-hourglass color="white" class="on-left" />
+                                        <q-spinner-hourglass
+                                            color="white"
+                                            class="on-left"
+                                        />
                                         Guardando
                                     </div>
                                 </template>
@@ -132,21 +135,21 @@
 </template>
 
 <script setup>
-import { api } from 'boot/axios';
-import { useQuasar } from 'quasar';
-import { LocalStorage } from 'quasar';
-import { useRouter } from 'vue-router';
-import { ref, onMounted, watch } from 'vue';
+import { api } from "@/boot/axios";
+import { useQuasar } from "quasar";
+import { LocalStorage } from "quasar";
+import { useRouter } from "vue-router";
+import { ref, onMounted, watch } from "vue";
 
 const route = useRouter();
 const $q = useQuasar();
-let name = ref('');
-let email = ref('');
+let name = ref("");
+let email = ref("");
 let enviando = ref(false);
-let password = ref('');
-let password_confirmation = ref('');
-let errors = ref('');
-const user = ref(LocalStorage.getItem('user'));
+let password = ref("");
+let password_confirmation = ref("");
+let errors = ref("");
+const user = ref(LocalStorage.getItem("user"));
 
 onMounted(() => {
     name.value = user.value.name;
@@ -162,21 +165,21 @@ const updateProfile = () => {
         password_confirmation: password_confirmation.value,
     };
 
-    api.patch('/users/editar-perfil', body)
+    api.patch("/users/editar-perfil", body)
         .then((response) => {
             enviando.value = false;
             $q.notify({
-                type: 'positive',
+                type: "positive",
                 message: response.data.message,
             });
-            LocalStorage.set('user', response.data.user);
+            LocalStorage.set("user", response.data.user);
         })
         .catch((e) => {
             errors.value = e.response.data.errors;
             enviando.value = false;
             $q.notify({
-                message: 'Hubo un problema al guardar',
-                type: 'negative',
+                message: "Hubo un problema al guardar",
+                type: "negative",
             });
         });
 };
@@ -189,7 +192,7 @@ const errorMessage = (field) => {
     }
 };
 const resetErrors = () => {
-    errors.value = '';
+    errors.value = "";
 };
 // const onFileChange = (file) => {
 //     createImage(file);

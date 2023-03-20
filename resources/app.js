@@ -50,9 +50,8 @@ const Router = createRouter({
 });
 
 const isLoggedIn = async () => {
-    await base.get("/sanctum/csrf-cookie");
     let { data } = await api.get("auth/user");
-    console.log(data ? data : "vacio");
+    // console.log(data ? data : "vacio");
     if (data) {
         LocalStorage.set("user", data);
         return true;

@@ -13,10 +13,11 @@ Autenticación con Sanctum para la SPA/PWA y gestion access tokens para conexion
 
 ## Roadmap
 
+-   Pinia Install
 -   CRUD Usuarios
 -   CRUD Permisos
 -   CRUD Roles
--   Pinia Install
+-   CRUD for API's Access Tokens
 
 ## DONE
 
@@ -24,4 +25,3 @@ Autenticación con Sanctum para la SPA/PWA y gestion access tokens para conexion
 -   Login, Logout, Register, Password Recovery in front
 -   Protect routes with permissions
 -   Protect menus and front routes with permissions
--   CRUD for API's Access Tokens

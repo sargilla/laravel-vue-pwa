@@ -1,5 +1,7 @@
 <template>
-    <q-page class="bg-light-white window-height window-width row justify-center items-center">
+    <q-page
+        class="bg-light-white window-height window-width row justify-center items-center"
+    >
         <q-img
             src="images/congreso.jpg"
             fit="cover"
@@ -14,7 +16,11 @@
                         Plataforma de Información Legislativa
                     </h5>
 
-                    <q-form :autofocus="true" class="q-gutter-sm" @submit.prevent="resetPassword">
+                    <q-form
+                        :autofocus="true"
+                        class="q-gutter-sm"
+                        @submit.prevent="resetPassword"
+                    >
                         <q-card-section>
                             <q-input
                                 v-model="email"
@@ -24,9 +30,15 @@
                                 label="Email"
                                 lazy-rules
                                 class="q-gutter-sm"
-                                :rules="[(val) => (val && val.length > 0) || 'Ingrese un email']"
+                                :rules="[
+                                    (val) =>
+                                        (val && val.length > 0) ||
+                                        'Ingrese un email',
+                                ]"
                             >
-                                <template #prepend> <q-icon name="person" /> </template>
+                                <template #prepend>
+                                    <q-icon name="person" />
+                                </template>
                             </q-input>
 
                             <q-input
@@ -38,10 +50,14 @@
                                 class="q-gutter-sm"
                                 lazy-rules
                                 :rules="[
-                                    (val) => (val && val.length > 0) || 'Ingrese nuevo password',
+                                    (val) =>
+                                        (val && val.length > 0) ||
+                                        'Ingrese nuevo password',
                                 ]"
                             >
-                                <template #prepend> <q-icon name="lock" /> </template>
+                                <template #prepend>
+                                    <q-icon name="lock" />
+                                </template>
                             </q-input>
                             <q-input
                                 v-model="password_confirmation"
@@ -52,10 +68,14 @@
                                 class="q-gutter-sm"
                                 lazy-rules
                                 :rules="[
-                                    (val) => (val && val.length > 0) || 'Repitea nuevo password',
+                                    (val) =>
+                                        (val && val.length > 0) ||
+                                        'Repitea nuevo password',
                                 ]"
                             >
-                                <template #prepend> <q-icon name="lock" /> </template>
+                                <template #prepend>
+                                    <q-icon name="lock" />
+                                </template>
                             </q-input>
                         </q-card-section>
                         <q-card-actions>
@@ -84,21 +104,21 @@
 </template>
 
 <script>
-import { ref, onMounted } from 'vue';
-import { useRouter, useRoute } from 'vue-router';
-import { api } from 'boot/axios';
-import { useQuasar } from 'quasar';
+import { ref, onMounted } from "vue";
+import { useRouter, useRoute } from "vue-router";
+import { api } from "@/boot/axios";
+import { useQuasar } from "quasar";
 export default {
-    name: 'ResetPassword',
+    name: "ResetPassword",
     setup() {
         const $q = useQuasar();
-        const token = ref('');
-        const email = ref('');
-        const password = ref('');
-        const password_confirmation = ref('');
+        const token = ref("");
+        const email = ref("");
+        const password = ref("");
+        const password_confirmation = ref("");
         const route = useRoute();
         const router = useRouter();
-        let errors = ref('');
+        let errors = ref("");
         onMounted(() => {
             token.value = route.params.token;
         });
@@ -110,13 +130,13 @@ export default {
                 password_confirmation: password.value,
             };
 
-            api.post('/auth/reset-password', body)
+            api.post("/auth/reset-password", body)
                 .then((response) => {
                     $q.notify({
-                        color: 'positive',
+                        color: "positive",
                         message: response.data.status,
                     });
-                    router.push({ path: '/login' });
+                    router.push({ path: "/login" });
                 })
                 .catch((e) => {
                     errors.value = e.response.data.errors;

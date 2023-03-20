@@ -6,7 +6,7 @@ import { quasar, transformAssetUrls } from "@quasar/vite-plugin";
 export default defineConfig({
     plugins: [
         laravel({
-            input: ["resources/js/app.js"],
+            input: ["resources/app.js"],
             refresh: true,
         }),
         vue({
