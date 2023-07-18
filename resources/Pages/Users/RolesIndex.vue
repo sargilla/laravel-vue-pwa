@@ -51,39 +51,39 @@
 </template>
 
 <script setup>
-import { useQuasar } from 'quasar';
-import { onMounted, ref } from 'vue';
-import AbmHelper from 'src/components/AbmHelper.vue';
-import Buttons from 'src/components/BottomButtons.vue';
-import { DataTablesHook } from 'src/hooks/DataTablesHook';
+import { useQuasar } from "quasar";
+import { onMounted, ref } from "vue";
+import AbmHelper from "@/Components/AbmHelper.vue";
+import Buttons from "@/Components/BottomButtons.vue";
+import { DataTablesHook } from "@/Hooks/DataTablesHook";
 const columns = [
     {
-        name: 'name',
-        field: 'name',
-        label: 'Rol',
+        name: "name",
+        field: "name",
+        label: "Rol",
         sortable: true,
-        align: 'left',
-        style: 'white-space: break-spaces',
+        align: "left",
+        style: "white-space: break-spaces",
     },
     {
-        name: 'permissions.name',
-        field: 'permissions_string',
-        label: 'Permisos',
+        name: "permissions.name",
+        field: "permissions_string",
+        label: "Permisos",
         sortable: false,
-        align: 'left',
+        align: "left",
         options: true,
         options_url: `/permissions`,
-        style: 'white-space: break-spaces',
+        style: "white-space: break-spaces",
     },
     {
-        name: 'actions',
-        field: 'actions',
-        label: 'Acciones',
+        name: "actions",
+        field: "actions",
+        label: "Acciones",
         sortable: false,
         searchable: false,
-        align: 'center',
+        align: "center",
         noDataField: true,
-        style: 'width: 60px',
+        style: "width: 60px",
     },
 ];
 
@@ -92,8 +92,8 @@ const $q = useQuasar();
 const searchInput = ref(null);
 const permissions = ref([]);
 const { filter, paginationSettings, loading, onRequest } = DataTablesHook({
-    sortBy: 'name',
-    url: '/getRoles',
+    sortBy: "name",
+    url: "/getRoles",
     fetchData: roles,
     columns,
 });
@@ -111,10 +111,10 @@ const edit = (data = {}) => {
             title: `Editar el rol ${data.name}`,
             columns,
             selections: permissions.value,
-            confirmButton: 'Guardar',
+            confirmButton: "Guardar",
             data: { ...data },
             action: {
-                method: 'put',
+                method: "put",
                 url: `/roles/${data.id}`,
             },
         },
@@ -127,13 +127,13 @@ const create = (data = {}) => {
         cancel: true,
         persistent: true,
         componentProps: {
-            title: 'Nuevo rol',
+            title: "Nuevo rol",
             columns,
-            confirmButton: 'Crear',
+            confirmButton: "Crear",
             data: { ...data },
             action: {
-                method: 'post',
-                url: '/roles',
+                method: "post",
+                url: "/roles",
             },
         },
     }).onOk(() => onRequest({}));
@@ -146,7 +146,7 @@ const remove = (data = {}) => {
         componentProps: {
             title: `Desea eliminar el rol ${data.name}?`,
             action: {
-                method: 'delete',
+                method: "delete",
                 url: `/roles/${data.id}`,
             },
         },

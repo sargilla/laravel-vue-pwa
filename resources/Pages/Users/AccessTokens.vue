@@ -66,7 +66,10 @@
                             >
                                 <template #loading>
                                     <div class="row">
-                                        <q-spinner-hourglass color="white" class="on-left" />
+                                        <q-spinner-hourglass
+                                            color="white"
+                                            class="on-left"
+                                        />
                                         Creando
                                     </div>
                                 </template>
@@ -81,50 +84,50 @@
 </template>
 
 <script setup>
-import { api } from 'boot/axios';
-import { useQuasar, copyToClipboard } from 'quasar';
-import { ref, onMounted } from 'vue';
+import { api } from "@/boot/axios";
+import { useQuasar, copyToClipboard } from "quasar";
+import { ref, onMounted } from "vue";
 
 const $q = useQuasar();
-const token_name = ref('');
+const token_name = ref("");
 const enviando = ref(false);
-const errors = ref('');
+const errors = ref("");
 const tokens = ref([]);
 
 onMounted(() => getTokens());
 
 const getTokens = async () => {
-    let { data } = await api.get('access-token');
+    let { data } = await api.get("access-token");
     tokens.value = data;
 };
 
 const copyToken = async (text) => {
     await copyToClipboard(text);
     $q.notify({
-        type: 'positive',
-        message: 'Copiado!',
+        type: "positive",
+        message: "Copiado!",
     });
 };
 
 const createToken = () => {
     enviando.value = true;
-    api.post('/access-token', { token_name: token_name.value })
+    api.post("/access-token", { token_name: token_name.value })
         .then(({ data }) => {
             enviando.value = false;
             $q.notify({
-                type: 'positive',
+                type: "positive",
                 multiLine: true,
                 message: `${data.message} <strong>${data.token}</strong>`,
                 timeout: 0,
                 html: true,
                 actions: [
                     {
-                        icon: 'mdi-content-copy',
-                        color: 'white',
+                        icon: "mdi-content-copy",
+                        color: "white",
                         noDismiss: true,
                         handler: () => copyToken(data.token),
                     },
-                    { icon: 'close', color: 'white' },
+                    { icon: "close", color: "white" },
                 ],
             });
             getTokens();
@@ -133,24 +136,24 @@ const createToken = () => {
             errors.value = e.response.data.errors;
             enviando.value = false;
             $q.notify({
-                message: 'Hubo un problema al guardar',
-                type: 'negative',
+                message: "Hubo un problema al guardar",
+                type: "negative",
             });
         });
 };
 
 const borrarToken = async (token) => {
-    const { data } = await api.delete('/access-token/' + token.id);
+    const { data } = await api.delete("/access-token/" + token.id);
     if (data) {
         $q.notify({
-            message: 'Se borro el token correctamente',
-            type: 'positive',
+            message: "Se borro el token correctamente",
+            type: "positive",
         });
         getTokens();
     } else {
         $q.notify({
-            message: 'No se pudo borrar',
-            type: 'negative',
+            message: "No se pudo borrar",
+            type: "negative",
         });
     }
 };
@@ -166,6 +169,6 @@ const errorMessage = (field) => {
 };
 
 const resetErrors = () => {
-    errors.value = '';
+    errors.value = "";
 };
 </script>

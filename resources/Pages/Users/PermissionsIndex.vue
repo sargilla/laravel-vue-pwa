@@ -56,46 +56,46 @@
 </template>
 
 <script setup>
-import { useQuasar } from 'quasar';
-import { onMounted, ref } from 'vue';
-import AbmHelper from 'src/components/AbmHelper.vue';
-import Buttons from 'src/components/BottomButtons.vue';
-import { DataTablesHook } from 'src/hooks/DataTablesHook';
+import { useQuasar } from "quasar";
+import { onMounted, ref } from "vue";
+import AbmHelper from "@/Components/AbmHelper.vue";
+import Buttons from "@/Components/BottomButtons.vue";
+import { DataTablesHook } from "@/Hooks/DataTablesHook";
 const columns = [
     {
-        field: 'name',
-        name: 'name',
+        field: "name",
+        name: "name",
         sortable: true,
-        label: 'Permiso',
-        align: 'left',
+        label: "Permiso",
+        align: "left",
     },
     {
-        name: 'roles.name',
-        field: 'roles_string',
-        label: 'Roles',
+        name: "roles.name",
+        field: "roles_string",
+        label: "Roles",
         sortable: true,
         searchable: true,
-        align: 'left',
+        align: "left",
         options: true,
         options_url: `/roles`,
     },
     {
-        field: 'actions',
-        name: 'actions',
-        label: 'Acciones',
+        field: "actions",
+        name: "actions",
+        label: "Acciones",
         searchable: false,
         sortable: false,
-        align: 'center',
+        align: "center",
         noDataField: true,
-        style: 'width: 60px',
+        style: "width: 60px",
     },
 ];
 const $q = useQuasar();
 const permissions = ref([]);
 const searchInput = ref(null);
 const { filter, paginationSettings, loading, onRequest } = DataTablesHook({
-    sortBy: 'name',
-    url: '/getPermissions',
+    sortBy: "name",
+    url: "/getPermissions",
     fetchData: permissions,
     columns,
 });
@@ -109,13 +109,13 @@ const create = (data = {}) => {
         cancel: true,
         persistent: true,
         componentProps: {
-            title: 'Nuevo permiso',
+            title: "Nuevo permiso",
             columns,
-            confirmButton: 'Crear',
+            confirmButton: "Crear",
             data: { ...data },
             action: {
-                method: 'post',
-                url: '/permissions',
+                method: "post",
+                url: "/permissions",
             },
         },
     }).onOk(() => onRequest({}));
@@ -129,10 +129,10 @@ const edit = (data = {}) => {
         componentProps: {
             title: `Editar permiso ${data.name}`,
             columns,
-            confirmButton: 'Guardar',
+            confirmButton: "Guardar",
             data: { ...data },
             action: {
-                method: 'patch',
+                method: "patch",
                 url: `/permissions/${data.id}`,
             },
         },
@@ -147,7 +147,7 @@ const remove = (data = {}) => {
         componentProps: {
             title: `Desea eliminar el rol ${data.name}?`,
             action: {
-                method: 'delete',
+                method: "delete",
                 url: `/permissions/${data.id}`,
             },
         },

@@ -66,9 +66,9 @@
 <script setup>
 import { useQuasar } from 'quasar';
 import { onMounted, ref } from 'vue';
-import AbmHelper from 'src/components/AbmHelper.vue';
-import { DataTablesHook } from 'src/hooks/DataTablesHook';
-import BottomButtons from 'src/components/BottomButtons.vue';
+import AbmHelper from '@/Components/AbmHelper.vue';
+import { DataTablesHook } from '@/Hooks/DataTablesHook';
+import BottomButtons from '@/Components/BottomButtons.vue';
 
 const users = ref([]);
 const $q = useQuasar();
