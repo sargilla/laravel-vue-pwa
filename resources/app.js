@@ -1,7 +1,7 @@
 import { createApp } from "vue";
 import routes from "./routes/index";
 import { base, api } from "@/boot/axios";
-import { Quasar, Dialog, LocalStorage } from "quasar";
+import { Quasar, Dialog, Notify, LoadingBar, LocalStorage } from "quasar";
 import { createRouter, createWebHistory } from "vue-router";
 
 // Import icon libraries
@@ -26,6 +26,8 @@ const app = createApp(App);
 app.use(Quasar, {
     plugins: {
         Dialog,
+        Notify,
+        LoadingBar,
     }, // import Quasar plugins and add here
     // lang: quasarLang,
     /*
