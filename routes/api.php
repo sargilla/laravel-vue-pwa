@@ -25,7 +25,12 @@ Route::group(['middleware' => ['auth:sanctum']], function () {
     Route::post('access-token', [AuthController::class, 'createAccessToken'])->name('tokens.create');
     Route::delete('access-token/{token_id}', [AuthController::class, 'deleteAccessToken'])->name('tokens.delete');
 
+    Route::patch('users/editar-perfil', [UsersController::class, 'updateProfile'])->name('editarPerfil');
+    Route::resource('users', UsersController::class)->except(['create', 'edit']);
 
+    Route::get('roles/select', [RolesController::class, 'selectRoles']);
+    Route::resource('roles', RolesController::class)->except(['create', 'edit']);
+    Route::resource('permissions', PermissionsController::class)->except(['create', 'edit']);
 
 
     /* Frontend Ajax Requests */
