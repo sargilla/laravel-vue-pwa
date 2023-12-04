@@ -250,11 +250,6 @@ asynckit@^0.4.0:
   resolved "https://registry.yarnpkg.com/asynckit/-/asynckit-0.4.0.tgz#c79ed97f7f34cb8f2ba1bc9790bcc366474b4b79"
   integrity sha512-Oei9OH4tRh0YqU3GxhX79dM/mwVgvbZJaSNaRk+bshkj0S5cfHcgYakreBjrHwatXKbz+IoIdYLxrKim2MjW0Q==
 
-autonumeric@^4.2.13:
-  version "4.10.0"
-  resolved "https://registry.yarnpkg.com/autonumeric/-/autonumeric-4.10.0.tgz#e6eef677ceb2211b72695767c057b3c03e009435"
-  integrity sha512-OtRqsHe+Y/U1Tqga484+FCkFtNixS9XrJBcJkBZzhOyVDGQkZ4aNwTtuAwRTlpFIwEdfgTDE/d0HLwDtWL+9/A==
-
 axios@^1.1.2:
   version "1.6.2"
   resolved "https://registry.yarnpkg.com/axios/-/axios-1.6.2.tgz#de67d42c755b571d3e698df1b6504cde9b0ee9f2"
@@ -400,6 +395,11 @@ glob-parent@~5.1.2:
   dependencies:
     is-glob "^4.0.1"
 
+immutable@^4.0.0:
+  version "4.3.4"
+  resolved "https://registry.yarnpkg.com/immutable/-/immutable-4.3.4.tgz#2e07b33837b4bb7662f288c244d1ced1ef65a78f"
+  integrity sha512-fsXeu4J4i6WNWSikpI88v/PcVflZz+6kMhUfIwc5SY+poQRPnaf5V7qds6SUyUN3cVxEzuCab7QIoLOQ+DQ1wA==
+
 is-binary-path@~2.1.0:
   version "2.1.0"
   resolved "https://registry.yarnpkg.com/is-binary-path/-/is-binary-path-2.1.0.tgz#ea1f7f3b80f064236e83470f86c09c254fb45b09"
@@ -514,12 +514,14 @@ rollup@^3.27.1:
   optionalDependencies:
     fsevents "~2.3.2"
 
-sass@1.32.12:
-  version "1.32.12"
-  resolved "https://registry.yarnpkg.com/sass/-/sass-1.32.12.tgz#a2a47ad0f1c168222db5206444a30c12457abb9f"
-  integrity sha512-zmXn03k3hN0KaiVTjohgkg98C3UowhL1/VSGdj4/VAAiMKGQOE80PFPxFP2Kyq0OUskPKcY5lImkhBKEHlypJA==
+sass@^1.32.12:
+  version "1.69.5"
+  resolved "https://registry.yarnpkg.com/sass/-/sass-1.69.5.tgz#23e18d1c757a35f2e52cc81871060b9ad653dfde"
+  integrity sha512-qg2+UCJibLr2LCVOt3OlPhr/dqVHWOa9XtZf2OjbLs/T4VPSJ00udtgJxH3neXZm+QqX8B+3cU7RaLqp1iVfcQ==
   dependencies:
     chokidar ">=3.0.0 <4.0.0"
+    immutable "^4.0.0"
+    source-map-js ">=0.6.2 <2.0.0"
 
 shebang-command@^2.0.0:
   version "2.0.0"
@@ -533,7 +535,7 @@ shebang-regex@^3.0.0:
   resolved "https://registry.yarnpkg.com/shebang-regex/-/shebang-regex-3.0.0.tgz#ae16f1644d873ecad843b0307b143362d4c42172"
   integrity sha512-7++dFhtcx3353uBaq8DDR4NuxBetBzC7ZQOhmTQInHEd6bSrXdiEyzCvG07Z44UYdLShWUyXt5M/yhz8ekcb1A==
 
-source-map-js@^1.0.2:
+"source-map-js@>=0.6.2 <2.0.0", source-map-js@^1.0.2:
   version "1.0.2"
   resolved "https://registry.yarnpkg.com/source-map-js/-/source-map-js-1.0.2.tgz#adbc361d9c62df380125e7f161f71c826f1e490c"
   integrity sha512-R0XvVJ9WusLiqTCEiGCmICCMplcCkIwwR11mOSD9CR5u+IXYdiseeEuXCVAjS54zqwkLcPNnmU4OeJ6tUrWhDw==
@@ -568,18 +570,6 @@ vite@^4.0.0:
     rollup "^3.27.1"
   optionalDependencies:
     fsevents "~2.3.2"
-
-vue-autonumeric@^1.2.6:
-  version "1.2.6"
-  resolved "https://registry.yarnpkg.com/vue-autonumeric/-/vue-autonumeric-1.2.6.tgz#97df68cbeac05d3dc0c3f5e49b9b5ff99bc05452"
-  integrity sha512-bKYpqDTqcw6kR26G25/PQZaBIcPTk6AblJPzVo3bc56HHHDC32MrKvCsQtkvFoF8TghHA5TTRZ5UZg2cuvuQEA==
-  dependencies:
-    autonumeric "^4.2.13"
-
-vue-currency-input@^3.0.5:
-  version "3.0.5"
-  resolved "https://registry.yarnpkg.com/vue-currency-input/-/vue-currency-input-3.0.5.tgz#292cd735740fce1264c1dde47966385da0e2df07"
-  integrity sha512-HG1hKvAvUDt/mklm+2nEEOuvMNxXVd+O2v2PPOia0iNAs4a7B0fWEsHSoca60Ah9EA4nR0Do5UQUkR5Wqhcb/g==
 
 vue-router@^4.1.6:
   version "4.2.5"
