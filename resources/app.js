@@ -1,27 +1,29 @@
-import { createApp } from "vue";
-import routes from "./routes/index";
-import { base, api } from "@/boot/axios";
-import { Quasar, Dialog, Notify, LoadingBar, LocalStorage } from "quasar";
-import { createRouter, createWebHistory } from "vue-router";
-
 // Import icon libraries
 // import quasarLang from "quasar/lang/es";
 import "@quasar/extras/roboto-font/roboto-font.css";
 import "@quasar/extras/material-icons/material-icons.css";
 import "@quasar/extras/mdi-v6/mdi-v6.css";
 import "@quasar/extras/fontawesome-v6/fontawesome-v6.css";
-
 // A few examples for animations from Animate.css:
 // import @quasar/extras/animate/fadeIn.css
 // import @quasar/extras/animate/fadeOut.css
-
 // Import Quasar css
 import "quasar/src/css/index.sass";
 
+import { createApp } from "vue";
+
+import { Dialog, LoadingBar, LocalStorage, Notify, Quasar } from "quasar";
+import money from "v-money";
+import { createRouter, createWebHistory } from "vue-router";
+
+import { api } from "@/boot/axios";
+
 /* Create App */
 import App from "./App.vue";
-const app = createApp(App);
+import routes from "./routes/index";
 
+const app = createApp(App);
+app.use(money, { precision: 2 });
 /* Quasar Plugin Config */
 app.use(Quasar, {
     plugins: {

@@ -9,6 +9,11 @@ export const pages = [
         text: "About",
         link: "/about",
     },
+    {
+        icon: "manage_accounts",
+        text: "Form Example",
+        link: "/forms",
+    },
 ];
 
 export const usuarios = [

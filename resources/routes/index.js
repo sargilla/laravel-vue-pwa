@@ -1,16 +1,15 @@
-import AuthRoutes from "./authRoutes";
-
 // const AuthLayout = () => import("@/Layouts/AuthLayout.vue");
 const About = () => import("@/Pages/About.vue");
+const Forms = () => import("@/pages/Forms.vue");
 const Home = () => import("@/Pages/HomePage.vue");
 const MainLayout = () => import("@/Layouts/MainLayout.vue");
 const LoginPage = () => import("@/Pages/Auth/LoginPage.vue");
 const DashboardPage = () => import("@/Pages/DashboardPage.vue");
-let UsersIndex = () => import('@/Pages/Users/UsersIndex.vue');
-let RolesIndex = () => import('@/Pages/Users/RolesIndex.vue');
-let EditProfile = () => import('@/Pages/Users/EditProfile.vue');
-let AccessTokens = () => import('@/Pages/Users/AccessTokens.vue');
-let PermissionsIndex = () => import('@/Pages/Users/PermissionsIndex.vue');
+let UsersIndex = () => import("@/Pages/Users/UsersIndex.vue");
+let RolesIndex = () => import("@/Pages/Users/RolesIndex.vue");
+let EditProfile = () => import("@/Pages/Users/EditProfile.vue");
+let AccessTokens = () => import("@/Pages/Users/AccessTokens.vue");
+let PermissionsIndex = () => import("@/Pages/Users/PermissionsIndex.vue");
 const ResetPassword = () => import("@/Pages/Auth/ResetPassword.vue");
 const SendEmailResetPassword = () =>
     import("@/Pages/Auth/SendEmailResetPassword.vue");
@@ -26,6 +25,7 @@ const routes = [
         children: [
             { path: "", component: Home, name: "Home" },
             { path: "about", component: About, name: "About" },
+            { path: "forms", component: Forms, name: "Forms" },
             {
                 path: "login",
                 name: "login",
@@ -59,28 +59,28 @@ const routes = [
                     auth: true,
                 },
             },
-             {
-                path: 'users',
+            {
+                path: "users",
                 component: UsersIndex,
-                name: 'Usuarios',
+                name: "Usuarios",
                 meta: {
                     auth: true,
                 },
             },
             {
-                path: 'permissions',
+                path: "permissions",
                 component: PermissionsIndex,
                 props: true,
-                name: 'Permisos',
+                name: "Permisos",
                 meta: {
                     auth: true,
                 },
             },
             {
-                path: 'roles',
+                path: "roles",
                 component: RolesIndex,
                 props: true,
-                name: 'Roles',
+                name: "Roles",
                 meta: {
                     auth: true,
                 },
@@ -95,10 +95,10 @@ const routes = [
                 },
             },
             {
-                path: 'access-tokens',
+                path: "access-tokens",
                 component: AccessTokens,
                 props: true,
-                name: 'Access Tokens',
+                name: "Access Tokens",
                 meta: {
                     auth: true,
                 },
